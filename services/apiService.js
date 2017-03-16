@@ -4,11 +4,14 @@
 		var apiService = {};
 
 		apiService.getAll = function(){
-			var source = "file:///F:/myConverter/data/data.json";
+			var source = "../data/data.json";
 			var xhttp = new XMLHttpRequest();
 			xhttp.onreadystatechange = function(){
-				if(this.readyState == 4 && this.status === 200){
-					var response = this.responseText;
+				if(this.readyState === 4 ){
+					if(this.status === 200){
+						var response = this.responseText;
+						console.log(response);
+					}
 				}
 			}
 			xhttp.open("GET", source, true);
