@@ -1,13 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Document</title>
-	<script src="services/apiService.js"></script>
-	<script src="app.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" type="text/css" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+  <script src="services/apiService.js"></script>
+  <script src="app.js"></script>
 </head>
+
 <body>
+  <div class="wrapper bg-primary">
+    <div class="row">
+      <h1>Конвертер валют</h1>
+
+      <form>
+
+        <div class="col-md-6">
+
+          <div class="form-group">
+            <div class="col-md-12">
+              <label for="sum">Введіть суму</label>
+              <input type="text" class="form-control" id="sum">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <div class="col-md-12">
+              <label for="res">Результат</label>
+              <input type="text" class="form-control" id="res">
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="row">
+      <form>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <div class="col-md-8">
+              <label for="pick">Оберіть валюту</label>
+              <select class="form-control">
+                <option>UAH-гривна</option>
+                <option>DZD-Алжирський динар</option>
+                <option>AZN-Азербайджанський манат</option>
+                <option>AUD-Австралійський долар</option>
+                <option>THB-Бат</option>
+                <option>BYN-Білоруський рубль</option>
+                <option>BGN-Болгарський лев</option>
+                <option>KRW-Вона</option>
+                <option>HKD-Гонконгівський долар</option>
+                <option>DKK-Данська крона</option>
+                <option>USD-Долар США</option>
+                <option>EUR-Євро</option>
+                <option>EGP-Єгипетський фунт</option>
+                <option>JPY-Єна</option>
+                <option>PLN-Злотий</option>
+                <option>CAD-Канадський долар</option>
+                <option>ILS-Новий ізраїльський шекель</option>
+                <option>RUB-Російський рубль</option>
+                <option>HUF-Форинт</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <div class="col-md-8">
+              <label for="convert">Конвертувати в</label>
+              <select class="form-control">
+                <option>UAH-гривна</option>
+                <option>DZD-Алжирський динар</option>
+                <option>AZN-Азербайджанський манат</option>
+                <option>AUD-Австралійський долар</option>
+                <option>THB-Бат</option>
+                <option>BYN-Білоруський рубль</option>
+                <option>BGN-Болгарський лев</option>
+                <option>KRW-Вона</option>
+                <option>HKD-Гонконгівський долар</option>
+                <option>DKK-Данська крона</option>
+                <option>USD-Долар США</option>
+                <option>EUR-Євро</option>
+                <option>EGP-Єгипетський фунт</option>
+                <option>JPY-Єна</option>
+                <option>PLN-Злотий</option>
+                <option>CAD-Канадський долар</option>
+                <option>ILS-Новий ізраїльський шекель</option>
+                <option>RUB-Російський рубль</option>
+                <option>HUF-Форинт</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <form>
+            <div class="col-md-12">
+
+              <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+
+                  <button type="submit" class="btn btn-default">Розрахувати</button>
+                  <button type="submit" class="btn btn-default">Очистити</button>
+                </div>
+              </div>
+
+            </div>
+          </form>
+        </div>
+      </form>
+    </div>
+  </div>
 </body>
+
 </html>
