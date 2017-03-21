@@ -1,5 +1,1 @@
-(function(){
-	'use strict'
-	
-	apiService.getAll();
-}());
+var appController = new AppController(apiService);

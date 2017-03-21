@@ -3,14 +3,16 @@
 	function defineApiService(){
 		var apiService = {};
 
-		apiService.getAll = function(){
+		apiService.getAll = function(successFunction, failFunction){
 			var source = "../data/data.json";
 			var xhttp = new XMLHttpRequest();
 			xhttp.onreadystatechange = function(){
-				if(this.readyState === 4 ){
+				if(this.readyState === 4){
 					if(this.status === 200){
-						var response = this.responseText;
-						console.log(response);
+						var response = JSON.parse(this.responseText);
+						successFunction(response);
+					}else{
+						failFunction(this.status);
 					}
 				}
 			}
@@ -20,7 +22,8 @@
 
 		return apiService;
 	}
-  if (typeof (apiService) == 'undefined') {
+
+  if (typeof (apiService) === 'undefined') {
     window.apiService = defineApiService();
   }
 })(window);
