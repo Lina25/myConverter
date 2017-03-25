@@ -69,11 +69,3 @@ function AppController(dataService) {
   };
   init();
 };
-
-
-
-
-//function myFunction() {
-//    var btn = document.createElement("BUTTON");
-//    document.body.appendChild(btn);
-//}
