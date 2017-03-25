@@ -1,7 +1,6 @@
 function AppController(dataService) {
   var scope = this;
 
-
   // setting view elements
   scope.header = document.getElementById("header");
   scope.cash = document.getElementById("cash");
@@ -10,62 +9,67 @@ function AppController(dataService) {
   scope.cash_to = document.getElementById("to");
   scope.calculate = document.getElementById("calculate");
 
+  scope.exchangeRates = [];
+
+  scope.updateOptions = function (element, result) {
+    //clear inner HTML
+    //element.innerHTML = "";
+    var msgContainer = document.createDocumentFragment();
+    for (var i = 0; i < result.length; i++) {
+      var option = msgContainer.appendChild(document.createElement("option"));
+      option.text = result[i].txt;
+      //add value for option
+    }
+    element.appendChild(msgContainer);
+  };
 
   // handlers
   scope.onDataLoadedSuccess = function (result) {
-  for (var i = 0; i < result.length; i++) {
-    var a = result[i].txt;
-  }
+    scope.updateOptions(scope.cash_from, result);
+    scope.updateOptions(scope.cash_to, result);
 
-  var msgContainer = document.createDocumentFragment();
-  for (var i = 0; i < result.length; i++) {
-    var option = msgContainer.appendChild(document.createElement("option"));
-    option.text = result[i].txt;
-  }
-  scope.cash_from.appendChild(msgContainer);
-};
-  
-  scope.onDataLoadedSuccess1 = function (result) {
-  for (var i = 0; i < result.length; i++) {
-    var a = result[i].txt;
-  }
+    scope.currencyCouces = result;
+  };  
 
-  var msgContainer = document.createDocumentFragment();
-  for (var i = 0; i < result.length; i++) {
-    var option = msgContainer.appendChild(document.createElement("option"));
-    option.text = result[i].txt;
-  }
-  scope.cash_to.appendChild(msgContainer);
-};
-  
-  
-  scope.onCalculateHandler = function () {
-  
+  scope.findExchangeObj = function (cc) {
+    if (!scope.exchangeRates.length) { return undefined; }
+
+    for (var i = 0; i < scope.exchangeRates; i++) {
+      if (scope.exchangeRates[i].cc === cc) {
+        return scope.exchangeRates[i];
+      }
+    }
+
+    return undefined;
+  };
+
+  scope.onCalculateHandler = function (event) {
+    event.preventDefault();
+
     var last_result, vfrom, vto, vcash;
-    vcash = document.getElementById("cash").value;
-    vfrom = document.getElementById("from").value;
-    vto = document.getElementById("to").value;
-    
+
+    vcash = scope.cash.value; // сума введена користувачем
+    vto = scope.cash_to.value; // валюта в яку конвертуєм
+
+    var exchangeObj = scope.findExchangeObj(vto);
+    // add exchnageObj validation
+
+    var result = vcash * exchangeObj.rate;
+
+    scope.res.value = result;
+
                         
     //alert(scope.cash.value);
     //var x = document.getElementById("cash").value;
     //document.getElementById("res").innerHTML = x;
 
-  }
-  scope.preventDefaultHandler = function (event) {
-    event.preventDefault();
   };
-
 
   // constuctor
   var init = function () {
     dataService.getAll(scope.onDataLoadedSuccess);
-    dataService.getAll(scope.onDataLoadedSuccess1);
     // event listeners
-
-
-    scope.calculate.addEventListener('click', scope.onCalculateHandler);
-    scope.calculate.addEventListener('click', scope.preventDefaultHandler);
+    scope.calculate.addEventListener('click', scope.onCalculateHandler, true);
   };
   init();
 };
