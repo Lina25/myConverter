@@ -43,7 +43,8 @@ function AppController(dataService) {
     return undefined;
   };
 
-  scope.onCalculateHandler = function (event, result) {
+
+  scope.onCalculateHandler = function (event) {
     event.preventDefault();
 
     var last_result, vfrom, vto, vcash;
@@ -52,17 +53,13 @@ function AppController(dataService) {
     vto = scope.cash_to.value; // валюта в яку конвертуєм
 
     var exchangeObj = scope.findExchangeObj(vto);
+            
     // add exchnageObj validation
-
     last_result = vcash * exchangeObj.rate;
     scope.res.value = last_result;
-
-                        
+        
     //alert(scope.cash.value);
-    //var x = document.getElementById("cash").value;
-    //document.getElementById("res").innerHTML = x;
-
-  };
+    };
 
   // constuctor
   var init = function () {
