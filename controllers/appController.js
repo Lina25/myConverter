@@ -45,21 +45,23 @@ function AppController(dataService) {
 
 
   scope.onCalculateHandler = function (event) {
-    event.preventDefault();
-
-    var last_result, vfrom, vto, vcash;
+   event.preventDefault();
     
-    vcash = scope.cash.value; // сума введена користувачем
-    vto = scope.cash_to.value; // валюта в яку конвертуєм
-
-    var exchangeObj = scope.findExchangeObj(vto);
-            
-    // add exchnageObj validation
-    last_result = vcash * exchangeObj.rate;
-    scope.res.value = last_result;
+   var result, vfrom, vto, vcash;
+   vcash = scope.cash.value; // сума введена користувачем
+   vto = scope.cash_to.value; // валюта в яку конвертуєм
+    
+   var exchangeObj = scope.findExchangeObj(vto);
+   // add exchnageObj validation
         
-    //alert(scope.cash.value);
-    };
+////console.log(exchangeObj.rate);
+//   if (exchangeObj === undefined) {
+//     return;
+//   }
+   result = vcash * exchangeObj.rate;
+   scope.res.value = result;
+   //alert(scope.cash.value);
+ };
 
   // constuctor
   var init = function () {
