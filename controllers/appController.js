@@ -28,13 +28,13 @@ function AppController(dataService) {
     scope.updateOptions(scope.cash_from, result);
     scope.updateOptions(scope.cash_to, result);
 
-    scope.currencyCources = result;
+    scope.exchangeRates = result;
   };  
 
   scope.findExchangeObj = function (cc) {
     if (!scope.exchangeRates.length) { return undefined; }
 
-    for (var i = 0; i < scope.exchangeRates; i++) {
+    for (var i = 0; i < scope.exchangeRates.length; i++) {
       if (scope.exchangeRates[i].cc === cc) {
         return scope.exchangeRates[i];
       }
