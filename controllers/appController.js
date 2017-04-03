@@ -53,14 +53,11 @@ function AppController(dataService) {
     
    var exchangeObj = scope.findExchangeObj(vto);
    // add exchnageObj validation
-        
-////console.log(exchangeObj.rate);
-//   if (exchangeObj === undefined) {
-//     return;
-//   }
-   result = vcash * exchangeObj.rate;
+   if (exchangeObj === undefined) {
+     return;
+   }
+   result = (vcash * exchangeObj.rate).toFixed(2);
    scope.res.value = result;
-   //alert(scope.cash.value);
  };
 
   // constuctor
