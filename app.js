@@ -1,1 +1,1 @@
-var appController = new AppController(apiService);
+var appController = new jqueryAppController(jqueryApiService);

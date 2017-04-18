@@ -1,17 +1,21 @@
-(function (window, jQuery) {
+(function (window, $) {
 	'use strict'
 
-	function defineApiService() {
+	function definejqueryApiService() {
 		 var jqueryApiService = {};
 
-		jqueryApiService.getAll = function (success, error) {
+		jqueryApiService.getAll = function (successFunction, failFunction) {
 		   $.ajax({
                     url: "../data/data.json",
                     dataType: 'json',
-                    success: function(response){
+                    success: function() {
                     var response = JSON.parse(responseText);
+                      successFunction(response);
            },
-                    error: function(statusCode);
+                    error: failFunction(status, errorThrown);
+             alert("Sorry, there was a problem!");
+             console.log("Error: " + errorThrown);
+             console.log("Status: " + status);
                 });
           
           
@@ -21,6 +25,6 @@
 	}
 
 	if (typeof (jqueryApiService) === 'undefined') {
-		window.jqueryApiService = defineApiService();
+		window.jqueryApiService = definejqueryApiService();
 	}
 })(window, jQuery);
